@@ -1,6 +1,6 @@
 import express from 'express';
 
-const app = express();
+export const app = express();
 
 
 app.get('/', (req, res) => {
@@ -13,6 +13,6 @@ app.get('/health', (req, res) => {
     res.send('Server is healthy!');
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-})
+if (process.argv[1] === import.meta.filename) {
+  app.listen(3000, () => console.log('Server is running on port 3000'));
+}

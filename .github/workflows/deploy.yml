@@ -18,6 +18,15 @@ jobs:
             echo "Error: Dockerfile not found at root!"
             exit 1
           fi
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies & Run Tests
+        run: |
+          npm ci
+          npm test
 
   deploy:
     needs: ci-checks
